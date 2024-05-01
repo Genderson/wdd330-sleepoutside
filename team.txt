@@ -4,3 +4,4 @@ team
 Genderson Barinas
 Dallin Stephens
 Robert Anderson
+Jonathan Trok
