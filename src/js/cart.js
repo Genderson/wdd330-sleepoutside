@@ -4,6 +4,22 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  SumTotalItems(cartItems);
+}
+
+function SumTotalItems(cartItems) {
+  if (cartItems.length) {
+    const total = cartItems.reduce(
+      (sum, item) => sum + (item.FinalPrice || 0),
+      0
+    );
+
+    const cartTotal = document.querySelector("#cart-total");
+    cartTotal.textContent = `Total: $${total}`;
+
+    cartTotal.classList.remove("hide");
+  }
 }
 
 function cartItemTemplate(item) {
