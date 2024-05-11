@@ -210,6 +210,18 @@ button {
   display: none;
 }
 
+.error-message {
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #d21313;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 50px;
+  background-color: #ffc8cacc;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
