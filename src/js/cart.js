@@ -5,10 +5,10 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-  SumTotalItems(cartItems);
+  sumTotalItems(cartItems);
 }
 
-function SumTotalItems(cartItems) {
+function sumTotalItems(cartItems) {
   if (cartItems.length) {
     const total = cartItems.reduce(
       (sum, item) => sum + (item.FinalPrice || 0),
