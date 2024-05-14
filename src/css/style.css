@@ -110,6 +110,20 @@ button {
   fill: gray;
 }
 
+#cart-items {
+  position: absolute;
+  top: 0.5rem;
+  right: -0.6rem;
+  font-size: 3rem;
+  cursor: pointer;
+  font-size: 13px;
+  border: 3px solid;
+  padding: 2px 6px;
+  background: #ffa524;
+  border-radius: 19px;
+  font-weight: bold;
+}
+
 /* End cart icon styles */
 
 .mission {
