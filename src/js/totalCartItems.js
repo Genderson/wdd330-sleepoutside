@@ -12,3 +12,15 @@ export function displayTotalCartItems() {
 }
 
 displayTotalCartItems();
+
+const addButton = document.querySelector("#addToCart"); // load the button
+const cart = document.querySelector(".cart") // the cart icon
+if (addButton !== null) { // Logic to see if the button exists and if so run the animation
+  addButton.addEventListener("click", () => {
+    cart.classList.add("animate");
+    setTimeout(() => {
+      cart.classList.remove('animate');
+    }, 300); 
+    } 
+  )
+};

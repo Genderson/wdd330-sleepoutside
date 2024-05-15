@@ -105,9 +105,13 @@ button {
 
 .cart svg {
   width: 25px;
+  transition: transform 0.3s ease; /*RA - for animation*/
 }
 .cart:hover svg {
   fill: gray;
+}
+.cart.animate { /*RA - For animation*/
+  transform: scale(1.5) rotate(20deg);
 }
 
 #cart-items {
