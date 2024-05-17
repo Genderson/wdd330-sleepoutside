@@ -173,6 +173,16 @@ button {
 .card__name {
   font-size: 1em;
 }
+/* Added discount */
+.product-card__original-price {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.product-card__discount {
+  color: red;
+  font-weight: bold;
+}
 /* End product list card */
 
 .product-detail {
