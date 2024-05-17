@@ -1,4 +1,5 @@
 import { findProductById } from "./productData.mjs";
+import { productList } from "./productList.mjs";
 
 // Reference to get href:
 // https://stackoverflow.com/questions/15439853/get-local-href-value-from-anchor-a-tag
@@ -7,7 +8,9 @@ import { findProductById } from "./productData.mjs";
 // Reference on how to use querySelector with nth-of-type:
 // https://stackoverflow.com/questions/41848550/how-to-select-nth-element-of-the-same-type
 
-loadingPrices();
+productList("tents");
+
+/*loadingPrices(); -- Dallin's code moved to productCardTemplate
 
 async function loadingPrices() {
   for (let i = 1; i < 5; i++) {
@@ -65,4 +68,4 @@ function getProductKey(productHref) {
     productHref.length
   );
   return productKey;
-}
+}*/
