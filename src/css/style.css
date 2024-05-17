@@ -110,7 +110,8 @@ button {
 .cart:hover svg {
   fill: gray;
 }
-.cart.animate { /*RA - For animation*/
+.cart.animate {
+  /*RA - For animation*/
   transform: scale(1.5) rotate(20deg);
 }
 
