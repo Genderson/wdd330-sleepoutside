@@ -10,11 +10,10 @@ function renderCartContents() {
 
   // Process Each item from localStorage, calling the template funtion
   // and appending to the main document
-  cartItems.forEach(item => {
+  cartItems.forEach((item) => {
     const cartItem = cartItemTemplate(item);
     productList.appendChild(cartItem);
-
-  })
+  });
   //document.querySelector(".product-list").appendChild(htmlItems);
 
   sumTotalItems(cartItems); // Update Item count
@@ -29,12 +28,12 @@ function sumTotalItems(cartItems) {
       0
     );
 
-    
     cartTotal.textContent = `Total: $${total}`;
 
     cartTotal.classList.remove("hide");
-  } else { // added else clause to hide when nothing was in cart
-    cartTotal.textContent = '';
+  } else {
+    // added else clause to hide when nothing was in cart
+    cartTotal.textContent = "";
     cartTotal.classList.add("hide");
   }
 }
@@ -64,29 +63,28 @@ function cartItemTemplate(item) {
   return cartItem;
 }
 
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", () => {
   // Add event listening to dom
   const productList = document.querySelector(".product-list");
   // When button is clicked, looks for the closest button to click
   // then loks for the closest item to the button
   productList.addEventListener("click", (event) => {
-      if (event.target.closest(".remove-item")) {
-        const cartItem = event.target.closest(".cart-item");
-        const itemId = cartItem.dataset.id; // Use 'id' in lowercase
-  
-        removeFromCart(itemId); // Function to remove item from local storage
-        cartItem.remove(); // Remove the item from the DOM directly
-        sumTotalItems(getLocalStorage("so-cart") || []); // Update the total
-      }
-    });
-  
+    if (event.target.closest(".remove-item")) {
+      const cartItem = event.target.closest(".cart-item");
+      const itemId = cartItem.dataset.id; // Use 'id' in lowercase
+
+      removeFromCart(itemId); // Function to remove item from local storage
+      cartItem.remove(); // Remove the item from the DOM directly
+      sumTotalItems(getLocalStorage("so-cart") || []); // Update the total
+    }
+  });
 
   function removeFromCart(itemId) {
     // Get Cart items from local storage
     let cart = getLocalStorage("so-cart") || [];
-    
+
     //Find the item in the index
-    const itemIndex = cart.findIndex(item => item.Id === itemId);
+    const itemIndex = cart.findIndex((item) => item.Id === itemId);
 
     // Remove from array
     if (itemIndex !== -1) {
@@ -99,7 +97,5 @@ document.addEventListener("DOMContentLoaded", ()=> {
   }
   renderCartContents();
 });
-
-
 
 renderCartContents();
