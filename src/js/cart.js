@@ -1,10 +1,9 @@
 import { getLocalStorage } from "./utils.mjs";
-import { displayTotalCartItems } from "./totalCartItems";
+import { displayTotalCartItems } from "./totalCartItems.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   const productList = document.querySelector(".product-list");
-  //const htmlItems = cartItems.map((item) => cartItemTemplate(item));
 
   productList.innerHTML = ""; // Clear existing content
 
@@ -14,7 +13,6 @@ function renderCartContents() {
     const cartItem = cartItemTemplate(item);
     productList.appendChild(cartItem);
   });
-  //document.querySelector(".product-list").appendChild(htmlItems);
 
   sumTotalItems(cartItems); // Update Item count
   displayTotalCartItems(); // Update cart total

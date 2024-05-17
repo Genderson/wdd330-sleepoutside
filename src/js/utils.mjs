@@ -36,3 +36,12 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   const htmlStrings =  list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
+
+export function calculateDiscount(finalPrice, listPrice){
+  const productDiscountPercentage = `${(
+    100 *
+    (1 - finalPrice / listPrice)
+  ).toFixed(0)}%`;
+
+  return productDiscountPercentage;
+}
