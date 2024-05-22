@@ -11,7 +11,7 @@ export function displayTotalCartItems() {
   document.querySelector("#cart-items").textContent = totalItems.toString();
 }
 
-displayTotalCartItems();
+// displayTotalCartItems();
 
 const addButton = document.querySelector("#addToCart"); // load the button
 const cart = document.querySelector(".cart"); // the cart icon

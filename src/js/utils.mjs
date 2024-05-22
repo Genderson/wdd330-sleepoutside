@@ -45,3 +45,37 @@ export function calculateDiscount(finalPrice, listPrice){
 
   return productDiscountPercentage;
 }
+
+export async function renderWithTemplate(templateFn, parentElement, data, callback, position = "afterbegin", clear = true) {
+  if (clear){
+    parentElement.innerHtml = "";
+  }
+
+  const html = await templateFn();
+
+  parentElement.insertAdjacentHTML(position, html);
+  if (callback) {
+    callback(data);
+  }
+}
+
+function loadTemplate(path) {
+  // this is called currying
+  return async function() {
+    const res = await fetch(path);
+    if (res.ok) {
+      const html = await res.text();
+      return html;
+    }
+  };
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplateFn = loadTemplate("/partials/header.html");
+  const footerTemplateFn = loadTemplate("/partials/footer.html");
+  let mainHeader = document.querySelector("header");
+  let mainFooter = document.querySelector("footer");
+
+  await renderWithTemplate(headerTemplateFn, mainHeader);
+  await renderWithTemplate(footerTemplateFn, mainFooter);
+}
