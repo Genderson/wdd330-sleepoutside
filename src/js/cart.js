@@ -3,7 +3,7 @@ import { displayTotalCartItems } from "./totalCartItems.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector(".product-list-cart");
 
   productList.innerHTML = ""; // Clear existing content
 
@@ -63,7 +63,7 @@ function cartItemTemplate(item) {
 
 document.addEventListener("DOMContentLoaded", () => {
   // Add event listening to dom
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector(".product-list-cart");
   // When button is clicked, looks for the closest button to click
   // then loks for the closest item to the button
   productList.addEventListener("click", (event) => {

@@ -182,7 +182,7 @@ button {
   padding: 0.5em;
 }
 
-.product-list {
+.product-list, .product-list-cart {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -190,7 +190,7 @@ button {
   padding: 0;
 }
 
-.product-list a {
+.product-list-cart a {
   text-decoration: none;
   color: var(--dark-grey);
 }
