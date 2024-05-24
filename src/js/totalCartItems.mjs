@@ -8,7 +8,10 @@ export function displayTotalCartItems() {
     totalItems = cartItems.length;
   }
 
-  document.querySelector("#cart-items").textContent = totalItems.toString();
+  const cartIcon = document.querySelector("#cart-items");
+  if(cartIcon){
+    cartIcon.textContent = totalItems.toString();
+  }  
 }
 
 

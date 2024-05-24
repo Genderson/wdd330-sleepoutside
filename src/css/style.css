@@ -182,7 +182,8 @@ button {
   padding: 0.5em;
 }
 
-.product-list, .product-list-cart {
+.product-list,
+.product-list-cart {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
