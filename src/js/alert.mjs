@@ -2,7 +2,7 @@
 // https://byui-cse.github.io/wdd230-course/lesson09/aa-json.html
 // https://byui-cse.github.io/wdd230-course/lesson09/fetch.html
 
-const pathForAlertsJsonFile = "public/json/alerts.json";
+const pathForAlertsJsonFile = "/json/alerts.json";
 
 getAlerts();
 
