@@ -51,29 +51,9 @@ export async function removeDuplicateItems(){
 
   if(ids.length > distinctIds.length) {
     console.log(newProductItems);
-    setLocalStorage("so-cart", new []);
-
-    /*for(const id of distinctIds){
-      const productsById = cartItems.filter(product => product.Id === id);
-      const productCount = productsById.length;
-      const newProduct = await findProductById(id);
-
-      newProduct.Quantity = productCount;
-      newProductItems.push(newProduct);
-    }*/
+    cartItems = [];
+    setLocalStorage("so-cart", cartItems);
   }
-
- /* distinctIds.forEach(async id => {
-    const productsById = cartItems.filter(product => product.Id === id);
-    const productCount = productsById.length;
-    const newProduct = await findProductById(id);
-
-    newProduct.Quantity = productCount;
-    newProductItems.push(newProduct);
-  });*/
-
-  //console.log(newProductItems);
-  //setLocalStorage("so-cart", newProductItems);
 }
 
 function renderProductDetails(productId) {

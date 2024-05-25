@@ -5,7 +5,10 @@ export function displayTotalCartItems() {
   let totalItems = 0;
 
   if (cartItems) {
-    totalItems = cartItems.length;
+    totalItems = cartItems.reduce(
+      (sum, item) => sum + (item.Quantity || 0),
+      0
+    );
   }
 
   const cartIcon = document.querySelector("#cart-items");
