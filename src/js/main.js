@@ -8,5 +8,5 @@ removeDuplicateItems();
 const element = document.querySelector(".product-list");
 
 if (element) {
-  productList("tents", element);
+  productList("tents", element, 4);
 }
