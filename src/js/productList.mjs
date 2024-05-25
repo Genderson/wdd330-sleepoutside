@@ -1,15 +1,20 @@
 import { getData } from "./productData.mjs";
 import { renderListWithTemplate, calculateDiscount } from "./utils.mjs";
 
-export async function productList(catagory, selector) {
+export async function productList(catagory, selector, displayLimit) {
     // get the element we will insert the list into from the selector
 
     // get the list of products 
     const productList = await getData(catagory);
 
-    const filteredList = productList.slice(0,4);
+    if (displayLimit) {
+      const filteredList = productList.slice(0,displayLimit);
     // render out the product list to the element
     renderListWithTemplate(productCardTemplate, selector, filteredList);
+    } else {
+      renderListWithTemplate(productCardTemplate, selector,productList)
+    }
+    
 }
 
 export function productCardTemplate(product) {
