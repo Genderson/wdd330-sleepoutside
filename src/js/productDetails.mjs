@@ -12,6 +12,7 @@ export default async function productDetails(productId) {
   // once the HTML is rendered we can add a listener to Add to Cart button
   document.getElementById("addToCart").addEventListener("click", addToCart);
 }
+
 function addToCart() {
   let cartItems = getLocalStorage("so-cart") || [];
 
@@ -20,10 +21,59 @@ function addToCart() {
     cartItems = [];
     cartItems.push(item);
   }
-  cartItems.push(product);
+
+  const productIndex = cartItems.findIndex(p => p.Id == product.Id);
+
+  if(productIndex !== -1){
+    let currentProduct = cartItems[productIndex];
+    currentProduct.Quantity += 1;
+  }
+  else{
+    cartItems.push(product);
+  }
 
   setLocalStorage("so-cart", cartItems);
   displayTotalCartItems();
+}
+
+export async function removeDuplicateItems(){
+
+  let newProductItems = [];
+  let cartItems = getLocalStorage("so-cart") || [];
+  if(!Array.isArray(cartItems)){
+    const item = cartItems;
+    cartItems = [];
+    cartItems.push(item);
+  }
+
+  let ids = cartItems.map(product => product.Id);
+  let distinctIds = [...new Set(ids)];
+
+  if(ids.length > distinctIds.length) {
+    console.log(newProductItems);
+    setLocalStorage("so-cart", new []);
+
+    /*for(const id of distinctIds){
+      const productsById = cartItems.filter(product => product.Id === id);
+      const productCount = productsById.length;
+      const newProduct = await findProductById(id);
+
+      newProduct.Quantity = productCount;
+      newProductItems.push(newProduct);
+    }*/
+  }
+
+ /* distinctIds.forEach(async id => {
+    const productsById = cartItems.filter(product => product.Id === id);
+    const productCount = productsById.length;
+    const newProduct = await findProductById(id);
+
+    newProduct.Quantity = productCount;
+    newProductItems.push(newProduct);
+  });*/
+
+  //console.log(newProductItems);
+  //setLocalStorage("so-cart", newProductItems);
 }
 
 function renderProductDetails(productId) {
