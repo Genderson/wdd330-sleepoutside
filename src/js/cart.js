@@ -22,11 +22,13 @@ function sumTotalItems(cartItems) {
   const cartTotal = document.querySelector("#cart-total"); // moved to work for whole function
   if (cartItems.length) {
     const total = cartItems.reduce(
-      (sum, item) => sum + (item.FinalPrice || 0),
+      (sum, item) => sum + (item.FinalPrice * item.Quantity || 0),
       0
     );
 
-    cartTotal.textContent = `Total: $${total}`;
+    // Reference to format to 2 decimal places using toFixed(2):
+    // https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
+    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
 
     cartTotal.classList.remove("hide");
   } else {
@@ -39,6 +41,8 @@ function sumTotalItems(cartItems) {
 function cartItemTemplate(item) {
   // update to work in ul element and remove button addition
   // Create li element and define class, attributes, and html
+  // Reference to format to 2 decimal places using toFixed(2):
+  // https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
   const cartItem = document.createElement("li");
   cartItem.classList.add("cart-item");
   cartItem.dataset.id = item.Id;
@@ -54,8 +58,11 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p>
+    <span class="cart-card__quantity">${item.Quantity} x </span>
+    <span class="cart-card__price">$${item.FinalPrice}</span>
+    <span>= $${(item.Quantity * item.FinalPrice).toFixed(2)}</span>
+  </p>
   `;
 
   return cartItem;
