@@ -1,24 +1,9 @@
 import { productList } from "./productList.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
-import { displayTotalCartItems } from "./totalCartItems.mjs";
+import { removeDuplicateItems } from "./productDetails.mjs";
 
-//loadHeaderFooter();
-/* 
-try {
-    await loadHeaderFooter();
-    displayTotalCartItems();
-  } catch (error) {
-    console.error(error);
-  }*/
-
-(async () => {
-  try {
-    await loadHeaderFooter();
-    displayTotalCartItems();
-  } catch (error) {
-    //console.error(error);
-  }
-})();
+loadHeaderFooter();
+removeDuplicateItems();
 
 const element = document.querySelector(".product-list");
 
