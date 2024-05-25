@@ -48,7 +48,9 @@ function cartItemTemplate(item) {
   cartItem.dataset.id = item.Id;
   cartItem.innerHTML = `
   <button class="remove-item"><span id=${item.Id}>❎</span></button>
-  <a href="/product_pages/index.html?product=${item.Id}" class="cart-card__image">
+  <a href="/product_pages/index.html?product=${
+    item.Id
+  }" class="cart-card__image">
     <img
       src="${item.Image}"
       alt="${item.Name}"
