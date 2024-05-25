@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>Sleep Outside | Cedar Ridge Rimrock 2-person tent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../css/style.css" />
+  <title>Sleep Outside | Cedar Ridge Rimrock 2-person tent</title>
 
-    <script src="../js/main.js" type="module"></script>
-    <script src="../js/product.js" type="module"></script>
-    <script src="../js/totalCartItems.mjs" type="module"></script>
-  </head>
+  <link rel="stylesheet" href="../css/style.css" />
 
-  <body>
-    <header class="divider"></header>
+  <script src="../js/main.js" type="module"></script>
+  <script src="../js/product.js" type="module"></script>
+  <script src="../js/totalCartItems.mjs" type="module"></script>
+</head>
 
-    <main class="divider">
-      <section class="product-detail">
-        <h3 id="productName"></h3>
-        <h2 class="divider" id="productNameWithoutBrand"></h2>
-        <img id="productImage" class="divider" src="" alt="" />
+<body>
+  <header class="divider"></header>
 
-        <p class="product-card__price">
-          Final Price: <span id="productFinalPrice"></span>
-        </p>
-        <span class="discount" id="discountPercentage"></span>
-        <p class="product-card__original-price">
-          Original Price: <span id="originalPrice"></span>
-        </p>
+  <main class="divider">
+    <section class="product-detail">
+      <h3 id="productName"></h3>
+      <h2 class="divider" id="productNameWithoutBrand"></h2>
+      <img id="productImage" class="divider" src="" alt="" />
 
-        <p class="product__color" id="productColorName"></p>
-        <p class="product__description" id="productDescriptionHtmlSimple"></p>
-        <div class="product-detail__add">
-          <button id="addToCart" data-id="">Add to Cart</button>
-        </div>
-      </section>
-      <div id="error-message" class="error-message hide"></div>
-    </main>
+      <p class="product-card__price">
+        Final Price: <span id="productFinalPrice"></span>
+      </p>
+      <span class="discount" id="discountPercentage"></span>
+      <p class="product-card__original-price">
+        Original Price: <span id="originalPrice"></span>
+      </p>
 
-    <footer></footer>
-  </body>
+      <p class="product__color" id="productColorName"></p>
+      <p class="product__description" id="productDescriptionHtmlSimple"></p>
+      <!-- Reference for input number type: -->
+      <!-- https://www.w3schools.com/tags/att_input_type_number.asp -->
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="productQuantity" name="quantity" min="1" max="1000">
+      <div class="product-detail__add">
+        <button id="addToCart" data-id="">Add to Cart</button>
+      </div>
+    </section>
+    <div id="error-message" class="error-message hide"></div>
+  </main>
+
+  <footer></footer>
+</body>
+
 </html>
