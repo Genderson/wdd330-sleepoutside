@@ -57,7 +57,7 @@ header {
 
 /* Search Bar Styling*/
 
-#search{
+#search {
   float: right;
   padding: 7px;
   border: none;
@@ -361,4 +361,10 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/*product list page*/
+.categories {
+  display: flex;
+  justify-content: center;
 }
