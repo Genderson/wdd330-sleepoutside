@@ -84,6 +84,7 @@ function renderProductDetails(productId, productQuantity = 1) {
       document.querySelector("#productQuantity").value = productQuantity;
       document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice}`;
       document.querySelector("#discountPercentage").innerText = `SAVE ${productDiscountPercentage}`;
+      document.querySelector("#discountPrice").innerText = `$${product.ListPrice - product.FinalPrice}`;
       document.querySelector("#originalPrice").innerText = `$${product.ListPrice}`;
 
       document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
