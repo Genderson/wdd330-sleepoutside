@@ -21,9 +21,4 @@ export async function findProductById(id) {
   return data.Result;
 }
 
-/*
-export async function findProductById(id) {
-  const products = await getData();
-  return products.find((item) => item.Id === id);
-}*/
 

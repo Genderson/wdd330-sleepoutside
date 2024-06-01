@@ -31,6 +31,7 @@ export function productCardTemplate(product) {
   <h2 class="card__name">${product.NameWithoutBrand}</h2>
   <p class="product-card__price">Final Price: $${product.FinalPrice}</p>
   <span class="discount">SAVE ${productDiscountPercentage}</span>
+  <p class="product-card__price">Discount: $${product.ListPrice - product.FinalPrice}</p>
   <p class="list-price">Original Price: $${product.ListPrice}</p></a>
   </li>`;
 }
