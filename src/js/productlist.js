@@ -19,10 +19,10 @@ displaySearchResults("tents", element, search);
 loadHeaderFooter();
 displayTotalCartItems();
 
-async function displaySearchResults(category, selector, searchTerms) {
+async function displaySearchResults(catagory, selector, searchTerms) {
   // get the elementFilterd we will insert the list into from the selector
   // get the list of products
-  const productList = await getData(category);
+  const productList = await getData(catagory);
   // Search List
   const results = searchArray(productList, searchTerms);
   // render out the product list to the elementFilterd
