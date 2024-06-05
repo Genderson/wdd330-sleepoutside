@@ -367,6 +367,13 @@ footer {
 .categories {
   display: flex;
   justify-content: center;
+  list-style-type: none;
+  gap: 80px;
+  text-align: center;
+}
+
+.categories img {
+  display: block;
 }
 
 /* Style for the pop-up overlay */

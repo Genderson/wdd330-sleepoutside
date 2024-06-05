@@ -13,9 +13,18 @@
   <body>
     <header id="main-header" class="divider"></header>
     <main class="divider">
+      <div id="sort">
+        <label for="sortOptions">Sort by:</label>
+        <select id="sortOptions">
+          <option value="nameasc">Name Ascending</option>
+          <option value="namedesc">Name Descending</option>
+          <option value="priceasc">Price Ascending</option>
+          <option value="pricedesc">Price Descending</option>
+        </select>
+      </div>
       <section class="products">
         <h2>Top Products: <span id="category-type"></span></h2>
-        <ul class="product-list categories"></ul>
+        <ul class="product-list"></ul>
       </section>
     </main>
     <footer id="main-footer"></footer>
