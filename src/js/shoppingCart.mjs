@@ -38,7 +38,9 @@ export function sumTotalItems(cartItems) {
         0
       );
   
-      cartTotal.textContent = `Total: $${total}`;
+      // Reference to format to 2 decimal places using toFixed(2):
+      // https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
+      cartTotal.textContent = `Total: $${total.toFixed(2)}`;
   
       cartTotal.classList.remove("hide");
     } else {

@@ -4,24 +4,14 @@ import { displayTotalCartItems } from "./totalCartItems";
 
 let product = {};
 
-export default async function productDetails(productId, productQuantity = 1) {
+export default async function productDetails(productId) {
   // get the details for the current product. findProductById will return a promise! use await or .then() to process it
   product = await findProductById(productId);
   // console.log(product);
-  // Reference on how to add new key value pair to JSON:
-  // https://stackoverflow.com/questions/41712178/how-to-add-a-new-key-value-pair-in-existing-json-object-using-javascript 
-  // Reference on how to convert strings to numbers using Number():
-  // https://www.w3schools.com/js/js_type_conversion.asp
-  product.Quantity = Number(productQuantity);
-  // once we have the product details we can render out the HTML
-  renderProductDetails(productId, productQuantity);
 
-  // once the HTML is rendered we can add a listener to Add to Cart button
-  // Reference for setTimeout(): https://www.w3schools.com/jsref/met_win_settimeout.asp
-  // If the cursor is still in the input box with the initial value of 1 when the button is clicked, 
-  // the quantity is not updated correctly without using setTimeout().
-  document.getElementById("addToCart").addEventListener("click", () => setTimeout(addToCart, 100));
-  //document.getElementById("addToCart").addEventListener("click", addToCart);
+  renderProductDetails(productId);
+
+  document.getElementById("addToCart").addEventListener("click", addToCart);
 }
 
 function addToCart() {
@@ -38,13 +28,17 @@ function addToCart() {
 
   if(productIndex !== -1){
     let currentProduct = cartItems[productIndex];
-    console.log(currentProduct);
-    
-    let productQuantitySelector = document.querySelector("#productQuantity");
-    currentProduct.Quantity = Number(productQuantitySelector.value);
-    // currentProduct.Quantity += 1;
+    // console.log(currentProduct);
+
+    // Reference on how to convert strings to numbers using Number():
+    // https://www.w3schools.com/js/js_type_conversion.asp
+    let productQuantityInputValue = Number(document.querySelector("#productQuantity").value);
+    currentProduct.Quantity += productQuantityInputValue;
+    //currentProduct.Quantity += 1;
   }
   else{
+    let productQuantity = document.querySelector("#productQuantity").value;
+    product.Quantity = Number(productQuantity);
     cartItems.push(product);
   }
 
@@ -73,42 +67,36 @@ export async function removeDuplicateItems(){
 }
 
 function renderProductDetails(productId, productQuantity = 1) {
-  if (productQuantity == 1) {
-    if (product) {
-      const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
+  if (product) {
+    const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
 
-      // Reference to capitalize first letter of a string:
-      // https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
-      document.querySelector("#productCategory").innerText = `${product.Category.charAt(0).toUpperCase()}${product.Category.slice(1)}`;      
-      document.querySelector("#productName").innerText = product.Brand.Name;
-      document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-      document.querySelector("#productImage").src = product.Images.PrimaryLarge;
-      document.querySelector("#productImage").alt = product.Name;
+    console.log(product);
+    // Reference to capitalize first letter of a string:
+    // https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+    document.querySelector("#productCategory").innerText = `${product.Category.charAt(0).toUpperCase()}${product.Category.slice(1)}`;   
+    document.querySelector("#productName").innerText = product.Brand.Name;
+    document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
+    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+    document.querySelector("#productImage").alt = product.Name;
 
-      document.querySelector("#productQuantity").value = productQuantity;
-      document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice}`;
-      document.querySelector("#discountPercentage").innerText = `SAVE ${productDiscountPercentage}`;
-      document.querySelector("#discountPrice").innerText = `$${product.ListPrice - product.FinalPrice}`;
-      document.querySelector("#originalPrice").innerText = `$${product.ListPrice}`;
+    document.querySelector("#productQuantity").value = productQuantity;
+    document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice}`;
+    document.querySelector("#discountPercentage").innerText = `SAVE ${productDiscountPercentage}`;
+    document.querySelector("#discountPrice").innerText = `$${product.ListPrice - product.FinalPrice}`;
+    document.querySelector("#originalPrice").innerText = `$${product.ListPrice}`;
 
-      document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
-      document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
-      document.querySelector("#addToCart").dataset.id = product.Id;
+    document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
+    document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
+    document.querySelector("#addToCart").dataset.id = product.Id;
 
-      const cartTotal = document.querySelector("#addToCart");
-      cartTotal.classList.remove("hide");
-    } else {
-      const cartTotal = document.querySelector("#addToCart");
-      cartTotal.classList.add("hide");
+    const cartTotal = document.querySelector("#addToCart");
+    cartTotal.classList.remove("hide");
+  } else {
+    const cartTotal = document.querySelector("#addToCart");
+    cartTotal.classList.add("hide");
 
-      const message = document.querySelector("#error-message");
-      message.textContent = `Product ${productId} does not exist`;
-      message.classList.remove("hide");
-    }
-  }
-  else {
-    // Reference to format to 2 decimal places using toFixed(2):
-    // https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
-    document.querySelector("#total").innerHTML = `<b>Total:</b> $${product.FinalPrice} X ${productQuantity} = $${(product.FinalPrice * productQuantity).toFixed(2)}<br><br>`; 
+    const message = document.querySelector("#error-message");
+    message.textContent = `Product ${productId} does not exist`;
+    message.classList.remove("hide");
   }
 }
