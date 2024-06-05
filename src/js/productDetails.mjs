@@ -7,6 +7,7 @@ let product = {};
 export default async function productDetails(productId, productQuantity = 1) {
   // get the details for the current product. findProductById will return a promise! use await or .then() to process it
   product = await findProductById(productId);
+  // console.log(product);
   // Reference on how to add new key value pair to JSON:
   // https://stackoverflow.com/questions/41712178/how-to-add-a-new-key-value-pair-in-existing-json-object-using-javascript 
   // Reference on how to convert strings to numbers using Number():
@@ -76,6 +77,9 @@ function renderProductDetails(productId, productQuantity = 1) {
     if (product) {
       const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
 
+      // Reference to capitalize first letter of a string:
+      // https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+      document.querySelector("#productCategory").innerText = `${product.Category.charAt(0).toUpperCase()}${product.Category.slice(1)}`;      
       document.querySelector("#productName").innerText = product.Brand.Name;
       document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
       document.querySelector("#productImage").src = product.Images.PrimaryLarge;
