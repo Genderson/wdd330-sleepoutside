@@ -7,6 +7,7 @@ let product = {};
 export default async function productDetails(productId, productQuantity = 1) {
   // get the details for the current product. findProductById will return a promise! use await or .then() to process it
   product = await findProductById(productId);
+  console.log(product);
   // Reference on how to add new key value pair to JSON:
   // https://stackoverflow.com/questions/41712178/how-to-add-a-new-key-value-pair-in-existing-json-object-using-javascript 
   // Reference on how to convert strings to numbers using Number():
