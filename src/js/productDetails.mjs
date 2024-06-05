@@ -76,6 +76,9 @@ function renderProductDetails(productId, productQuantity = 1) {
     if (product) {
       const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
 
+      // Reference to capitalize first letter of a string:
+      // https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+      document.querySelector("#productCategory").innerText = `${product.Category.charAt(0).toUpperCase()}${product.Category.slice(1)}`;
       document.querySelector("#productName").innerText = product.Brand.Name;
       document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
       document.querySelector("#productImage").src = product.Images.PrimaryLarge;
