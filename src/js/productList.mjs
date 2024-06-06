@@ -44,12 +44,18 @@ export function productCardTemplate(product) {
   </li>`;
 }
 
-export function getCategoryType(){
+export async function getCategoryType(){
   const category = getParam('category');
   const categoryType = document.querySelector("#category-type");
   if (category) {
-    categoryType.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-  }  
+    // used to get the number of products for a category: Example: Tents -> (24 items)
+    const productList = await getData(category);
+    // console.log(productList.length); productList.length is the number of products for a category.
+    // Reference to capitalize first letter of a string:
+    // https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+    // Reference for right arrow symbol "&#129034;": https://www.w3schools.com/charsets/ref_utf_arrows.asp
+    categoryType.innerHTML = `${category.charAt(0).toUpperCase()}${category.slice(1)} &#129034; (${productList.length} items)`;
+  }
 }
 
 export async function getAllItems() {
