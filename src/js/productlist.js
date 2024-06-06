@@ -5,7 +5,7 @@ import {
   renderListWithTemplate,
 } from "./utils.mjs";
 import { displayTotalCartItems } from "./totalCartItems.mjs";
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 
 const element = document.querySelector(".product-list");
 const search = getParam("search");
@@ -22,7 +22,7 @@ displayTotalCartItems();
 async function displaySearchResults(catagory, selector, searchTerms) {
   // get the elementFilterd we will insert the list into from the selector
   // get the list of products
-  const productList = await getData(catagory);
+  const productList = await getProductsByCategory(catagory);
   // Search List
   const results = searchArray(productList, searchTerms);
   // render out the product list to the elementFilterd

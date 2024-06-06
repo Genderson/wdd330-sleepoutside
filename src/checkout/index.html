@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="../js/main.js" type="module"></script>
   </head>
 
@@ -19,8 +19,69 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+
+      <div id="checkout-response"></div>
+      <form action="checkout" class="checkout-form">
+        <fieldset>
+          <label for="fname"
+            >First Name<input name="fname" type="text" required
+          /></label>
+          <label for="lname"
+            >Last Name<input name="lname" type="text" required
+          /></label>
+          <label for="street"
+            >Street<input name="street" type="text" required
+          /></label>
+          <label for="city"
+            >City<input name="city" type="text" required
+          /></label>
+          <label for="state"
+            >State<input name="state" type="text" required
+          /></label>
+          <label for="zip"
+            >Zip<input id="zip" name="zip" type="text" required
+          /></label>
+        </fieldset>
+
+        <fieldset>
+          <label for="cardNumber"
+            >Card number<input name="cardNumber" required
+          /></label>
+          <label for="expiration">Expiration<input name="expiration" /></label>
+          <label for="code"
+            >Security Code<input name="code" type="number"
+          /></label>
+        </fieldset>
+
+        <fieldset class="checkout-summary">
+          <legend>Order Summary</legend>
+          <ul>
+            <li>
+              <label for="cartTotal"
+                >Item Subtotal(<span id="num-items"></span>)</label
+              >
+              <p name="cartTotal" id="cartTotal"></p>
+            </li>
+            <li>
+              <label for="shipping">Shipping Estimate</label>
+              <p id="shipping"></p>
+            </li>
+            <li>
+              <label for="tax">Tax</label>
+              <p id="tax"></p>
+            </li>
+            <li>
+              <label for="orderTotal"><b>Order Total</b></label>
+              <p id="orderTotal"></p>
+            </li>
+          </ul>
+        </fieldset>
+
+        <button id="checkoutSubmit" type="submit">Checkout</button>
+      </form>
     </main>
 
     <footer></footer>
+    <script src="../js/checkout.js" type="module" defer></script>
   </body>
 </html>
