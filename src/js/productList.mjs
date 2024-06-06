@@ -49,7 +49,7 @@ export async function getCategoryType(){
   const categoryType = document.querySelector("#category-type");
   if (category) {
     // used to get the number of products for a category: Example: Tents -> (24 items)
-    const productList = await getData(category);
+    const productList = await getProductsByCategory(category);
     // console.log(productList.length); productList.length is the number of products for a category.
     // Reference to capitalize first letter of a string:
     // https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
