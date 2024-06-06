@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="../js/main.js" type="module"></script>
   </head>
 
@@ -20,31 +20,68 @@
         <h2>Review & Place your Order</h2>
       </section>
 
-      <form action="">
+      <div id="checkout-response"></div>
+      <form action="checkout" class="checkout-form">
         <fieldset>
-          <label for="fname"><input name="fname" type="text" required >First Name</label>
-          <label for="lname"><input name="lname" type="text" required >Last Name</label>
-          <label for="street"><input name="street" type="text" required>Street</label>
-          <label for="city"><input name="city" type="text" required>City</label>
-          <label for="state"><input name="state" type="text" required>State</label>
-          <label for="zip"><input name="zip" type="text" required>Zip</label>        
+          <label for="fname"
+            >First Name<input name="fname" type="text" required
+          /></label>
+          <label for="lname"
+            >Last Name<input name="lname" type="text" required
+          /></label>
+          <label for="street"
+            >Street<input name="street" type="text" required
+          /></label>
+          <label for="city"
+            >City<input name="city" type="text" required
+          /></label>
+          <label for="state"
+            >State<input name="state" type="text" required
+          /></label>
+          <label for="zip"
+            >Zip<input id="zip" name="zip" type="text" required
+          /></label>
         </fieldset>
 
         <fieldset>
-          <label for="cardNumber"><input name="cardNumber" type="text" required>Card number</label>
-          <label for="expiration"><input name="expiration" type="date">Expiration</label>
-          <label for="code"><input name="code" type="number">Security Code</label>       
+          <label for="cardNumber"
+            >Card number<input name="cardNumber" required
+          /></label>
+          <label for="expiration">Expiration<input name="expiration" /></label>
+          <label for="code"
+            >Security Code<input name="code" type="number"
+          /></label>
         </fieldset>
 
-        <fieldset>
-          <label for="cardNumber">Item SubTotal</label>
-          <label for="expiration">Shipping estimate</label>
-          <label for="securityCode">Tax</label>
-          <label for="securityCode">Order Total</label>     
+        <fieldset class="checkout-summary">
+          <legend>Order Summary</legend>
+          <ul>
+            <li>
+              <label for="cartTotal"
+                >Item Subtotal(<span id="num-items"></span>)</label
+              >
+              <p name="cartTotal" id="cartTotal"></p>
+            </li>
+            <li>
+              <label for="shipping">Shipping Estimate</label>
+              <p id="shipping"></p>
+            </li>
+            <li>
+              <label for="tax">Tax</label>
+              <p id="tax"></p>
+            </li>
+            <li>
+              <label for="orderTotal"><b>Order Total</b></label>
+              <p id="orderTotal"></p>
+            </li>
+          </ul>
         </fieldset>
+
+        <button id="checkoutSubmit" type="submit">Checkout</button>
       </form>
     </main>
 
     <footer></footer>
+    <script src="../js/checkout.js" type="module" defer></script>
   </body>
 </html>

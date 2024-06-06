@@ -335,6 +335,18 @@ button {
   border-radius: 5px;
   font-weight: bold;
 }
+.checkout-link {
+  padding: 0.5em 2em;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: auto;
+  display: block;
+  border: 0;
+  font-size: var(--large-font);
+  cursor: pointer;
+  width: 175px;
+  text-decoration: none;
+}
 
 /* Product List Page*/
 .sort-options {
@@ -374,4 +386,31 @@ footer {
 
 .categories img {
   display: block;
+}
+
+/* checkout styles */
+.checkout-form {
+  padding: 0.5em;
+  width: 60%;
+}
+.checkout-form label {
+  display: block;
+}
+.checkout-form input {
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.checkout-summary > ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+.checkout-summary li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-summary input {
+  width: 25%;
+  font-size: 1em;
 }

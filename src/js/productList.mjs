@@ -1,4 +1,4 @@
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 import { renderListWithTemplate, calculateDiscount, getParam } from "./utils.mjs";
 
 export async function productList(selector, sortOption, displayLimit) {
@@ -14,7 +14,7 @@ export async function productList(selector, sortOption, displayLimit) {
     //console.table(searchedArray); testing
     renderListWithTemplate(productCardTemplate,selector,sortSearch);
   } else if (category){
-    const productList = await getData(category);
+    const productList = await getProductsByCategory(category);
     const sortProduct = sortArray(productList, sortOption);
     if (displayLimit) {
       const filteredList = sortProduct.slice(0,displayLimit);
@@ -53,10 +53,10 @@ export function getCategoryType(){
 }
 
 export async function getAllItems() {
-  const tentList = await getData("tents");
-  const packList = await getData("backpacks");
-  const bagList = await getData("sleeping-bags");
-  const mocklist = await getData("hammocks");
+  const tentList = await getProductsByCategory("tents");
+  const packList = await getProductsByCategory("backpacks");
+  const bagList = await getProductsByCategory("sleeping-bags");
+  const mocklist = await getProductsByCategory("hammocks");
   const fullList = tentList.concat(packList,bagList,mocklist);
   //console.table(fullList); testing
   return fullList;
