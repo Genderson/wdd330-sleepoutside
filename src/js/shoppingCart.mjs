@@ -8,26 +8,45 @@ export function shoppingCart() {
 }
 
 export function cartItemTemplate(item) {
-    const cartItem = `<li class="cart-item" data-id=${item.Id}>
-    <button class="remove-item"><span id=${item.Id}>❎</span></button>
-    <a href="/product_pages/index.html?product=${item.Id}" class="cart-card__image">
-      <img
-        src="${item.Images.PrimaryLarge}"
-        alt="${item.Name}"
-      />
-    </a>
-    <a href="/product_pages/index.html?product=${item.Id}">
-      <h2 class="card__name">${item.Name}</h2>
-    </a>
-    <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p>
-      <span class="cart-card__quantity">${item.Quantity} x </span>
-      <span class="cart-card__price">$${item.FinalPrice}</span>
-      <span>= $${(item.Quantity * item.FinalPrice).toFixed(2)}</span>
-    </p>
-    </li>`;
+  var imageSizeUrl = "";
+  // Reference for window.screen.width: https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
+  if (window.screen.width >= 300) {
+    imageSizeUrl = item.Images.PrimaryLarge;
+  }
+  else {
+    imageSizeUrl = item.Images.PrimaryMedium;
+  }
 
-    return cartItem;
+  //Reference for window.addEventListener and resize: https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
+  window.addEventListener("resize", () => {
+    if (window.screen.width >= 300) {
+      imageSizeUrl = item.Images.PrimaryLarge;
+    }
+    else {
+      imageSizeUrl = item.Images.PrimaryMedium;
+    }   
+  });
+
+  const cartItem = `<li class="cart-item" data-id=${item.Id}>
+  <button class="remove-item"><span id=${item.Id}>❎</span></button>
+  <a href="/product_pages/index.html?product=${item.Id}" class="cart-card__image">
+    <img
+      src="${imageSizeUrl}"
+      alt="${item.Name}"
+    />
+  </a>
+  <a href="/product_pages/index.html?product=${item.Id}">
+    <h2 class="card__name">${item.Name}</h2>
+  </a>
+  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <p>
+    <span class="cart-card__quantity">${item.Quantity} x </span>
+    <span class="cart-card__price">$${item.FinalPrice}</span>
+    <span>= $${(item.Quantity * item.FinalPrice).toFixed(2)}</span>
+  </p>
+  </li>`;
+
+  return cartItem;
 }
 
 export function sumTotalItems(cartItems) {

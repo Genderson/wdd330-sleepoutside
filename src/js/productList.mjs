@@ -27,12 +27,31 @@ export async function productList(selector, sortOption, displayLimit) {
 }
 
 export function productCardTemplate(product) {
+  var imageSizeUrl = "";
+  // Reference for window.screen.width: https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
+  if (window.screen.width >= 400) {
+    imageSizeUrl = product.Images.PrimaryLarge;
+  }
+  else {
+    imageSizeUrl = product.Images.PrimaryMedium;
+  }
+
+  //Reference for window.addEventListener and resize: https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
+  window.addEventListener("resize", () => {
+    if (window.screen.width >= 400) {
+      imageSizeUrl = product.Images.PrimaryLarge;
+    }
+    else {
+      imageSizeUrl = product.Images.PrimaryMedium;
+    }   
+  });
+
   const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
 
   return `<li class="product-card">
   <a href="/product_pages/index.html?product=${product.Id}">
   <img
-    src="${product.Images.PrimaryMedium}"
+    src="${imageSizeUrl}"
     alt="Image of ${product.Name}"
   />
   <h3 class="card__brand">${product.Brand.Name}</h3>

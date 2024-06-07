@@ -76,7 +76,31 @@ function renderProductDetails(productId, productQuantity = 1) {
     document.querySelector("#productCategory").innerText = `${product.Category.charAt(0).toUpperCase()}${product.Category.slice(1)}`;   
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+
+    // Reference for window.screen.width: https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
+    if (window.screen.width >= 500) {
+      document.querySelector("#productImage").src = product.Images.PrimaryExtraLarge;
+    }
+    else if (window.screen.width >= 250) {
+      document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+    }
+    else {
+      document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+    }
+
+    // Reference for window.addEventListener and resize: https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
+    window.addEventListener("resize", () => {
+      if (window.screen.width >= 500) {
+        document.querySelector("#productImage").src = product.Images.PrimaryExtraLarge;
+      }
+      else if (window.screen.width >= 250) {
+        document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+      }
+      else {
+        document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+      }   
+    });
+    
     document.querySelector("#productImage").alt = product.Name;
 
     document.querySelector("#productQuantity").value = productQuantity;
