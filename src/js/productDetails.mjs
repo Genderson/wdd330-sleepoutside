@@ -38,6 +38,8 @@ function addToCart() {
   }
   else{
     let productQuantity = document.querySelector("#productQuantity").value;
+    // Reference on how to add a new key value pair to JSON object:
+    // https://stackoverflow.com/questions/41712178/how-to-add-a-new-key-value-pair-in-existing-json-object-using-javascript
     product.Quantity = Number(productQuantity);
     cartItems.push(product);
   }
