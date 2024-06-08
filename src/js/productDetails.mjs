@@ -14,6 +14,11 @@ export default async function productDetails(productId) {
   document.getElementById("addToCart").addEventListener("click", addToCart);
 }
 
+export  async function loadViewProductDetails(productId) {
+  product = await findProductById(productId);
+  viewProductDetails(product);
+}
+
 function addToCart() {
   let cartItems = getLocalStorage("so-cart") || [];
   console.log(cartItems);
@@ -66,6 +71,21 @@ export async function removeDuplicateItems(){
     cartItems = [];
     setLocalStorage("so-cart", cartItems);
   }
+}
+
+export function clearViewProductDetails() {
+  document.querySelector("#productCategory").innerText = "";   
+  document.querySelector("#productName").innerText = "";
+  document.querySelector("#productNameWithoutBrand").innerText = "";
+  document.querySelector("#productImage").src = "";
+  document.querySelector("#productImage").alt = "";
+  document.querySelector("#productFinalPrice").innerText = "";
+  document.querySelector("#discountPercentage").innerText = "";
+  document.querySelector("#discountPrice").innerText = "";
+  document.querySelector("#originalPrice").innerText = "";
+
+  document.querySelector("#productColorName").innerText = "";
+  document.querySelector("#productDescriptionHtmlSimple").innerHTML = "";
 }
 
 function renderProductDetails(productId, productQuantity = 1) {
@@ -126,3 +146,45 @@ function renderProductDetails(productId, productQuantity = 1) {
     message.classList.remove("hide");
   }
 }
+
+function viewProductDetails(product) {
+    const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
+    document.querySelector("#productCategory").innerText = `${product.Category.charAt(0).toUpperCase()}${product.Category.slice(1)}`;   
+    document.querySelector("#productName").innerText = product.Brand.Name;
+    document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
+        // Reference for window.screen.width: https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
+        if (window.screen.width >= 500) {
+          document.querySelector("#productImage").src = product.Images.PrimaryExtraLarge;
+        }
+        else if (window.screen.width >= 250) {
+          document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+        }
+        else {
+          document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+        }
+    
+        // Reference for window.addEventListener and resize: https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
+        window.addEventListener("resize", () => {
+          if (window.screen.width >= 500) {
+            document.querySelector("#productImage").src = product.Images.PrimaryExtraLarge;
+          }
+          else if (window.screen.width >= 250) {
+            document.querySelector("#productImage").src = product.Images.PrimaryLarge;
+          }
+          else {
+            document.querySelector("#productImage").src = product.Images.PrimaryMedium;
+          }   
+        });
+        
+        document.querySelector("#productImage").alt = product.Name;
+
+    document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice}`;
+    document.querySelector("#discountPercentage").innerText = `SAVE ${productDiscountPercentage}`;
+    document.querySelector("#discountPrice").innerText = `$${product.ListPrice - product.FinalPrice}`;
+    document.querySelector("#originalPrice").innerText = `$${product.ListPrice}`;
+
+    document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
+    document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
+}
+
+

@@ -1,6 +1,7 @@
 import { getProductsByCategory } from "./externalServices.mjs";
 import { renderListWithTemplate, calculateDiscount, getParam } from "./utils.mjs";
 
+
 export async function productList(selector, sortOption, displayLimit) {
     // get the element we will insert the list into from the selector
   const search = getParam("search");
@@ -60,6 +61,7 @@ export function productCardTemplate(product) {
   <span class="discount">SAVE ${productDiscountPercentage}</span>
   <p class="product-card__price">Discount: $${product.ListPrice - product.FinalPrice}</p>
   <p class="list-price">Original Price: $${product.ListPrice}</p></a>
+  <button id="${product.Id}" class="openModalBtn">View detail</button>
   </li>`;
 }
 
@@ -142,3 +144,4 @@ export function sortArray(array, sortOption) {
   }
   return sortedArray;
 }
+

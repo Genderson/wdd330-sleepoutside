@@ -1,5 +1,4 @@
 import { productList, getCategoryType } from "./productList.mjs";
-//import { setClick } from "./utils.mjs";
 
 const element = document.querySelector(".product-list");
 const sortOptions = document.getElementById("sortOptions");
