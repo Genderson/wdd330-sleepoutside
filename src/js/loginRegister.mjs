@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginRegisterBtn = document.getElementById('loginRegister');
 
-    if (loginRegisterBtn) {
-        loginRegisterBtn.addEventListener('click', () => {
+    document.body.addEventListener('click', (event) => {
+        if (event.target.id == 'loginRegister') {
             // Check if the pop-up is already loaded
             if (!document.getElementById('loginPopup')) {
                 // Fetch the login/register pop-up HTML
@@ -21,10 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // If the pop-up is already loaded, just display it
                 document.getElementById('loginPopup').style.display = 'block';
             }
-        });
-    } else {
-        console.error('loginRegister button not found in the DOM');
-    }
+        }
+    });
+
 });
 
 function initLoginPopup() {
@@ -59,6 +57,6 @@ function initLoginPopup() {
             closePopup(); // Close the pop-up after clicking the register link
         });
     } else {
-        console.error('Pop-up or close button not found in the DOM');
+        console.log('Pop-up or close button not found in the DOM');
     }
 }
