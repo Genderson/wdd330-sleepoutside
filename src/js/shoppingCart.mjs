@@ -10,22 +10,25 @@ export function shoppingCart() {
 export function cartItemTemplate(item) {
   var imageSizeUrl = "";
   // Reference for window.screen.width: https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
-  if (window.screen.width >= 300) {
+  if (window.screen.width >= 300 && item.Images) {
     imageSizeUrl = item.Images.PrimaryLarge;
   }
-  else {
+  else if (window.screen.width < 300 && item.Images){ //RA-Added additional logic to determine if the "Images" property existed
     imageSizeUrl = item.Images.PrimaryMedium;
+  } else {
+    imageSizeUrl = item.Image; //RA-Tents does not contain the "Images" property rather it has "Image"
   }
 
   //Reference for window.addEventListener and resize: https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
   window.addEventListener("resize", () => {
-    if (window.screen.width >= 300) {
+    if (window.screen.width >= 300 && item.Images) {
       imageSizeUrl = item.Images.PrimaryLarge;
     }
-    else {
+    else if (window.screen.width < 300 && item.Images){ //RA-Added additional logic to determine if the "Images" property existed
       imageSizeUrl = item.Images.PrimaryMedium;
-    }   
-  });
+    } else {
+      imageSizeUrl = item.Image; //RA-Tents does not contain the "Images" property rather it has "Image"
+    }});
 
   const cartItem = `<li class="cart-item" data-id=${item.Id}>
   <button class="remove-item"><span id=${item.Id}>❎</span></button>
