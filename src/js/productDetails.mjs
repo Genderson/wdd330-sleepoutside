@@ -137,8 +137,13 @@ function renderProductDetails(productId, productQuantity = 1) {
     document.querySelector("#discountPercentage").innerText = `SAVE ${productDiscountPercentage}`;
     document.querySelector("#discountPrice").innerText = `$${product.ListPrice - product.FinalPrice}`;
     document.querySelector("#originalPrice").innerText = `$${product.ListPrice}`;
-
+    
+    // Product Color
     document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
+    const colorArray = product.Colors;
+    console.table(colorArray);
+    renderColorDetails(colorArray);
+    
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
     document.querySelector("#addToCart").dataset.id = product.Id;
 
@@ -195,4 +200,12 @@ function viewProductDetails(product) {
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
 }
 
-
+function renderColorDetails(colorArray) {
+  let colorImgSpan = document.querySelector("#colorImg");
+  for (let index = 0; index < colorArray.length; index++) {
+    const colorImg = document.createElement("img");
+    colorImg.src = product.Colors[index].ColorChipImageSrc;
+    colorImg.alt = product.Colors[index].ColorName;
+    colorImgSpan.appendChild(colorImg);
+  }
+}

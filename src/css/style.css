@@ -504,3 +504,8 @@ footer {
 .carousel-container button:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
+
+/* For product page color options */
+#colorImg img{
+  width: 70px;
+}
