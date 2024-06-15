@@ -13,7 +13,7 @@
     <script src="../js/main.js" type="module"></script>
     <script src="../js/product.js" type="module"></script>
     <script src="../js/totalCartItems.mjs" type="module"></script>
-    <script src="../js/carouselUtils.js" defer></script>
+
   </head>
 
   <body>
@@ -28,8 +28,8 @@
 
         <div class="carousel-container">
           <div class="carousel" id="carousel"></div>
-          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+          <button id="prevImage" class="prev" >&#10094;</button>
+          <button id="nextImage" class="next" >&#10095;</button>
         </div>
 
         <p class="product-card__price">
