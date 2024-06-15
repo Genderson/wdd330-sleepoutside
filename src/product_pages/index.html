@@ -13,6 +13,7 @@
     <script src="../js/main.js" type="module"></script>
     <script src="../js/product.js" type="module"></script>
     <script src="../js/totalCartItems.mjs" type="module"></script>
+    <script src="../js/carouselUtils.js" defer></script>
   </head>
 
   <body>
@@ -24,6 +25,12 @@
         <h3 id="productName"></h3>
         <h2 class="divider" id="productNameWithoutBrand"></h2>
         <img id="productImage" class="divider" src="" alt="" />
+
+        <div class="carousel-container">
+          <div class="carousel" id="carousel"></div>
+          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
 
         <p class="product-card__price">
           Final Price: <span id="productFinalPrice"></span>
@@ -39,7 +46,7 @@
         <p class="product__description" id="productDescriptionHtmlSimple"></p>
         <!-- Reference for input number type: -->
         <!-- https://www.w3schools.com/tags/att_input_type_number.asp -->
-        <label for="quantity">Quantity:</label>
+        <label for="productQuantity">Quantity:</label>
         <input
           type="number"
           id="productQuantity"
@@ -57,5 +64,7 @@
     </main>
 
     <footer></footer>
+
+    <script src="../js/carousel.js" type="module" defer></script>
   </body>
 </html>
