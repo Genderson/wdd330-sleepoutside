@@ -207,12 +207,17 @@ button {
 }
 
 .product-list,
-.product-list-cart {
+.product-list-cart,
+.product-list-filter {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
+}
+
+.product-list-filter {
+  justify-content: center;
 }
 
 .product-list-cart a {

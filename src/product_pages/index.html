@@ -13,7 +13,6 @@
     <script src="../js/main.js" type="module"></script>
     <script src="../js/product.js" type="module"></script>
     <script src="../js/totalCartItems.mjs" type="module"></script>
-
   </head>
 
   <body>
@@ -28,8 +27,8 @@
 
         <div class="carousel-container">
           <div class="carousel" id="carousel"></div>
-          <button id="prevImage" class="prev" >&#10094;</button>
-          <button id="nextImage" class="next" >&#10095;</button>
+          <button id="prevImage" class="prev">&#10094;</button>
+          <button id="nextImage" class="next">&#10095;</button>
         </div>
 
         <p class="product-card__price">
@@ -61,10 +60,14 @@
         </div>
       </section>
       <div id="error-message" class="error-message hide"></div>
+
+      <section class="">
+        <ul class="product-list-filter"></ul>
+      </section>
     </main>
 
     <footer></footer>
-
+    <script src="../js/recommended-products.mjs" type="module" defer></script>
     <script src="../js/carousel.mjs" type="module" defer></script>
   </body>
 </html>

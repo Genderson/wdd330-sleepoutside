@@ -1,36 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const prevImageBtn = document.querySelector("#prevImage");
-    prevImageBtn.addEventListener('click', () => {
+    if(prevImageBtn){
+      prevImageBtn.addEventListener('click', () => {
         moveSlide(-1);
-    });
+      });
+    }
 
     const nextImageBtn = document.querySelector("#nextImage");
-    nextImageBtn.addEventListener('click', () => {
+    if(nextImageBtn){
+      nextImageBtn.addEventListener('click', () => {
         moveSlide(1);
-    });
- /*   const images = [
-        'http://server-nodejs.cit.byui.edu:3000/images/sleepoutside/the-north-face-assault-tent-3-person-3-season-in-summit-gold-asphalt-grey~p~989ch_01~600.jpg',
-        'http://server-nodejs.cit.byui.edu:3000/images/sleepoutside/the-north-face-assault-tent-3-person-3-season~a~989ch_2~600.1.jpg',
-        'http://server-nodejs.cit.byui.edu:3000/images/sleepoutside/the-north-face-assault-tent-3-person-3-season~a~989ch_3~600.1.jpg',
-        'http://server-nodejs.cit.byui.edu:3000/images/sleepoutside/the-north-face-assault-tent-3-person-3-season~a~989ch_4~600.1.jpg'
-    ];
-
-    const carousel = document.getElementById('carousel');
-
-    images.forEach((src) => {
-        const slide = document.createElement('div');
-        slide.classList.add('carousel-slide');
-        
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = `Imagen ${images.indexOf(src) + 1}`;
-        
-        slide.appendChild(img);
-        carousel.appendChild(slide);
-    });
-*/});
-
+      });
+    }
+});
 
 
 export function loadImages(images) {

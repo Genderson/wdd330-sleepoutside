@@ -27,6 +27,38 @@ export async function productList(selector, sortOption, displayLimit) {
   }
 }
 
+export async function productRecommendedList(selector, displayLimit) {
+  const category = getParam("category");
+  const productId = getParam("product");
+
+  const productList = await getProductsByCategory(category);
+  const filteredList = productList.filter(item => item.Id !== productId);
+  const shuffledArray = shuffleArray(filteredList);
+  const response = shuffledArray.slice(0, displayLimit);
+
+  renderListWithTemplate(productRecommendedCardTemplate, selector, response);
+}
+
+export function productRecommendedCardTemplate(product) {
+
+  const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
+  const category = getParam('category');
+
+  return `<li class="product-card">
+  <a href="/product_pages/index.html?product=${product.Id}&category=${category}">
+  <img
+    src="${product.Images.PrimaryMedium}"
+    alt="Image of ${product.Name}"
+  />
+  <h3 class="card__brand">${product.Brand.Name}</h3>
+  <h2 class="card__name">${product.NameWithoutBrand}</h2>
+  <p class="product-card__price">Final Price: $${product.FinalPrice}</p>
+  <span class="discount">SAVE ${productDiscountPercentage}</span>
+  <p class="product-card__price">Discount: $${product.ListPrice - product.FinalPrice}</p>
+  <p class="list-price">Original Price: $${product.ListPrice}</p></a>
+  </li>`;
+}
+
 export function productCardTemplate(product) {
   var imageSizeUrl = "";
   // Reference for window.screen.width: https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
@@ -48,9 +80,10 @@ export function productCardTemplate(product) {
   });
 
   const productDiscountPercentage = calculateDiscount(product.FinalPrice, product.ListPrice);
+  const category = getParam('category');
 
   return `<li class="product-card">
-  <a href="/product_pages/index.html?product=${product.Id}">
+  <a href="/product_pages/index.html?product=${product.Id}&category=${category}">
   <img
     src="${imageSizeUrl}"
     alt="Image of ${product.Name}"
@@ -145,3 +178,10 @@ export function sortArray(array, sortOption) {
   return sortedArray;
 }
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j] = array[j], array[i]]; // Intercambiar elementos
+  }
+  return array;
+}
