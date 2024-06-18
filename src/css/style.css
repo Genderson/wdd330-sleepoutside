@@ -207,12 +207,17 @@ button {
 }
 
 .product-list,
-.product-list-cart {
+.product-list-cart,
+.product-list-filter {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
+}
+
+.product-list-filter {
+  justify-content: center;
 }
 
 .product-list-cart a {
@@ -447,6 +452,7 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
+
 /* Pop up */
 
 /* Style for the pop-up overlay */
@@ -491,3 +497,56 @@ footer {
   cursor: pointer;
 }
 /* pop up end */
+=======
+
+/*carousel*/
+
+.carousel-container {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.carousel-slide img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.carousel-container button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8%;
+}
+
+.carousel-container button.prev {
+  left: 10px;
+}
+
+.carousel-container button.next {
+  right: 10px;
+}
+
+.carousel-container button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}

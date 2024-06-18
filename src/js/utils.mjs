@@ -98,3 +98,13 @@ function addAnimationCartButton(){
     });
   }
 }
+
+export function alertMessage(messages, scroll=true) {
+  let response = document.querySelector("#checkout-response");
+  for (let index = 0; index < Object.keys(messages).length; index++) {
+      const error = Object.values(messages)[index];
+      const p = document.createElement("p");
+      p.innerText = `${error}`;
+      response.appendChild(p);
+  }
+}
