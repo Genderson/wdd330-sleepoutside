@@ -14,3 +14,4 @@ sortOptions.addEventListener("change", function () {
   element.innerHTML = "";
   productList(element, sortOrder);
 });
+

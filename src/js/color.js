@@ -1,4 +1,4 @@
-//document.addEventListener("DOMContentLoaded", () => { // Script is running before the other scripts finish
+document.addEventListener("DOMContentLoaded", () => { // Script is running before the other scripts finish
     const colorSwatches = getSwatches();
     const selectedColorDisplay = document.getElementById("productColorName");
     const selectedColorInput = document.getElementById("selectedColor");
@@ -22,7 +22,7 @@
             selectedColorInput.value = id
         })
     })
-//})
+})
 
 async function getColor() {
     await Promise.all
