@@ -15,6 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
       removeFromCart(itemId); // Function to remove item from local storage
       cartItem.remove(); // Remove the item from the DOM directly
     }
+    else if (event.target.closest(".save-item")) {
+      const cartItem = event.target.closest(".cart-item");
+      const itemId = cartItem.dataset.id; // Use 'id' in lowercase
+      console.log(cartItem);
+      console.log(itemId);
+      //removeFromCart(itemId); // Function to remove item from local storage
+      //cartItem.remove(); // Remove the item from the DOM directly
+    }    
   });
 
   function removeFromCart(itemId) {
@@ -23,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //Find the item in the index
     const itemIndex = cart.findIndex((item) => item.Id === itemId);
+    console.log(itemIndex);
 
     // Remove from array
     if (itemIndex !== -1) {
@@ -38,3 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
 shoppingCart();
 displayTotalCartItems();
 sumTotalItems(getLocalStorage("so-cart") || []);
+
+function saveForLater(item) {
+  let cartItems = getLocalStorage("save-for-later-cart") || [];
+  console.log(cartItems);
+  cartItems.push(item);
+
+  setLocalStorage("saved-for-later-cart", cartItems);
+}
