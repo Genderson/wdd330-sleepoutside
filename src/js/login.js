@@ -1,9 +1,8 @@
-import { getParam, setLocalStorage } from "./utils.mjs";
+import { getParam, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
 import { loginRequest } from "./externalServices.mjs";
-import { jwtDecode } from "jwt-decode";
 
-
-const redirect = getParam("redirect");
+loadHeaderFooter();
+let redirect = getParam("redirect");
 
 
 const form = document.forms[0];
@@ -18,7 +17,11 @@ if (form != null) {
     if (chk_status) {
         const email = form.email.value;
         const password = form.password.value;
+        if (redirect==null) {
+            redirect = "/";
+        }
         login(email, password, redirect);
+
     }
   });
 }
