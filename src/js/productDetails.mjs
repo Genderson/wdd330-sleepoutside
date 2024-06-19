@@ -206,6 +206,8 @@ function renderColorDetails(colorArray) {
     const colorImg = document.createElement("img");
     colorImg.src = product.Colors[index].ColorChipImageSrc;
     colorImg.alt = product.Colors[index].ColorName;
+    colorImg.id = product.Colors[index].ColorCode
+    colorImg.classList.add("color-swatch")
     colorImgSpan.appendChild(colorImg);
   }
 }
