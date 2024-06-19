@@ -24,19 +24,19 @@ document.addEventListener("DOMContentLoaded", () => { // Script is running befor
     })
 })
 
-async function getColor() {
+export async function getColor() {
     await Promise.all
     const color = swatch.getAttribute("alt");
     return color
 }
 
-async function getId() {
+export async function getId() {
     await Promise.all
     const id = swatch.getAttribute("id")
     return id
 }
 
-async function getSwatches() {
+export async function getSwatches() {
     await Promise.all;
     const colorSwatches = document.querySelectorAll(".color-swatch");
     return colorSwatches;

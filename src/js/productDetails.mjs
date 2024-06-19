@@ -5,7 +5,7 @@ import { loadImages } from "./carousel.mjs";
 
 let product = {};
 
-export default async function productDetails(productId) {
+export async function productDetails(productId) {
   // get the details for the current product. findProductById will return a promise! use await or .then() to process it
   product = await findProductById(productId);
   renderProductDetails(productId);
@@ -13,7 +13,7 @@ export default async function productDetails(productId) {
   document.getElementById("addToCart").addEventListener("click", addToCart);
 }
 
-export  async function loadViewProductDetails(productId) {
+export async function loadViewProductDetails(productId) {
   product = await findProductById(productId);
   viewProductDetails(product);
 }
