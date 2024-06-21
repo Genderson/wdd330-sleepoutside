@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check if the pop-up is already loaded
             if (!document.getElementById('loginPopup')) {
                 // Fetch the login/register pop-up HTML
-                fetch('./pop-up/loginPopup.html')
+                fetch('../pop-up/loginPopup.html')
+                // /src/pop-up/popup.html
                     .then(response => response.text())
                     .then(data => {
                         // Insert the pop-up HTML into the body of the page

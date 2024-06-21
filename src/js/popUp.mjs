@@ -34,7 +34,7 @@ function initNewsletterPopup() {
 
 // Load the pop-up HTML and initialize it
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/pop-up/popup.html')
+    fetch('./pop-up/popup.html')
         .then(response => response.text())
         .then(data => {
             document.body.insertAdjacentHTML('beforeend', data);
