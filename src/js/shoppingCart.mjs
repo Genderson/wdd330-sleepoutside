@@ -29,9 +29,9 @@ export function cartItemTemplate(item) {
 
   const cartItem = `<li class="cart-item" data-id=${item.Id}>
   <button class="remove-item"><span id=${item.Id}>❎</span></button>
-  <button class="save-item"><span id=${item.Id}>Save for later</span></button>
+  <button class="save-item"><span id=${item.Id}-save-move>Save for later</span></button>
   <a href="/product_pages/index.html?product=${item.Id}" class="cart-card__image">
-    <img
+    <img id=${item.Id}-image
       src="${imageSizeUrl}"
       alt="${item.Name}"
     />
