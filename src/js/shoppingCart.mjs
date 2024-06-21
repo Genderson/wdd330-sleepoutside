@@ -26,7 +26,8 @@ export function cartItemTemplate(item) {
       imageSizeUrl = item.Images.PrimaryMedium;
     }   
   });
-
+  console.log(item);
+  console.log(item.SelectedColor[0].ColorName)
   const cartItem = `<li class="cart-item" data-id=${item.Id}>
   <button class="remove-item"><span id=${item.Id}>❎</span></button>
   <a href="/product_pages/index.html?product=${item.Id}" class="cart-card__image">
@@ -38,7 +39,10 @@ export function cartItemTemplate(item) {
   <a href="/product_pages/index.html?product=${item.Id}">
     <h2 class="card__name">${item.Name}</h2>
   </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <div>
+    <p class="cart-card__color">${item.SelectedColor[0].ColorName}</p>
+    <img src=${item.SelectedColor[0].ColorChipImageSrc} alt=${item.SelectedColor[0].ColorName}>
+  </div>
   <p>
     <span class="cart-card__quantity">${item.Quantity} x </span>
     <span class="cart-card__price">$${item.FinalPrice}</span>
