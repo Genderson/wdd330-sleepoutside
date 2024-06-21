@@ -83,9 +83,9 @@ export async function removeDuplicateItems(){ //Updated RA 20June24
 
   //let ids = cartItems.map(product => product.Id);
   //let distinctIds = [...new Set(ids)];
-
+  // Create array for unique items
   let uniqueItems = [];
-  let seenItems = [];
+  let seenItems = new Set();
 
   /*if(ids.length > distinctIds.length) {
     console.log(newProductItems);
@@ -93,6 +93,7 @@ export async function removeDuplicateItems(){ //Updated RA 20June24
     setLocalStorage("so-cart", cartItems);
   }*/
 
+    //Iterate over the cart items pulling unique values and adding them to uniqueItems
   for (let item of cartItems) {
     let uniqueKey = item.UniqueKey;
     if (!seenItems.has(uniqueKey)) {
@@ -100,6 +101,7 @@ export async function removeDuplicateItems(){ //Updated RA 20June24
       uniqueItems.push(item);
     }
   }
+  // if duplicates were found, update local storage
   if (uniqueItems.length < cartItems.length){
     setLocalStorage("so-cart", uniqueItems);
   }
