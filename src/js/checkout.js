@@ -15,7 +15,7 @@ const form = document.forms[0];
 if (form != null) {
   // this is how it would look if we listen for the submit on the form
   form.checkoutSubmit.addEventListener("click", (e) => {
-     e.preventDefault();
+    e.preventDefault();
     // e.target would contain our form in this case
     var chk_status = form.checkValidity();
     form.reportValidity();
