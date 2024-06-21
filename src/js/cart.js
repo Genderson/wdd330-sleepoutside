@@ -1,6 +1,10 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 import { shoppingCart, sumTotalItems } from "./shoppingCart.mjs";
 import { displayTotalCartItems } from "./totalCartItems.mjs";
+import { removeDuplicateItems } from "./productDetails.mjs";
+
+loadHeaderFooter();
+removeDuplicateItems();
 
 document.addEventListener("DOMContentLoaded", () => {
   // Add event listening to dom
