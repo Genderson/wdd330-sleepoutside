@@ -15,8 +15,8 @@ export default defineConfig({
         product_list: resolve(__dirname, "src/product-list/index.html"),
         login: resolve(__dirname, "src/login/index.html"),
         orders: resolve(__dirname, "src/orders/index.html"),
-        login_popup: resolve(__dirname, "src/orders/loginPopup.html"),
-        popup: resolve(__dirname, "src/orders/popup.html")
+        login_popup: resolve(__dirname, "src/pop-up/loginPopup.html"),
+        popup: resolve(__dirname, "src/pop-up/popup.html")
       },
     },
   },
