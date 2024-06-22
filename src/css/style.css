@@ -4,8 +4,8 @@
   /* colors */
   --primary-color: #f0a868;
   --secondary-color: #525b0f;
-  --tertiary-color: #a4b8c4;
-  --light-grey: #d0d0d0;
+  --tertiary-color: rgb(164, 184, 196);
+  --light-grey: rgb(208, 208, 208);
   --dark-grey: #303030;
 
   /* sizes */
@@ -647,3 +647,70 @@ footer {
   border-radius: 8px;
   margin: 5px auto;
 }
+
+/* ********** STYLING FOR COMMENTS SECTION ********** */
+#comments-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  background-color: rgba(164, 184, 196, 0.2); /* used the roots tertiary-color added opacity*/
+  font-family: var(--font-body);
+
+}
+
+#comments-section h2 {
+  margin-bottom: 15px;
+  font-size: var(--large-font);
+  color: var(--dark-grey);
+  font-family: var(--font-headline);
+}
+
+#comments-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+#comments-list li {
+  padding: 10px;
+  border-bottom: 1px solid var(--light-grey);
+  color: var(--dark-grey);
+}
+
+#comments-list li:last-child {
+  border-bottom: none;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#comment-text {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  resize: vertical;
+  min-height: 80px;
+  font-size: var(--font-base);
+  font-family: var(--font-body);
+}
+
+#comment-form button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: var(--font-base);
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+#comment-form button:hover {
+  background-color: var(--secondary-color);
+}
+/* ********** END STYLING FOR COMMENTS SECTION ********** */
