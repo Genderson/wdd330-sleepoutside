@@ -340,6 +340,7 @@ button {
   border-radius: 5px;
   font-weight: bold;
 }
+
 .checkout-link {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
@@ -398,9 +399,11 @@ footer {
   padding: 0.5em;
   width: 60%;
 }
+
 .checkout-form label {
   display: block;
 }
+
 .checkout-form input {
   width: 100%;
   font-size: 1.2em;
@@ -410,11 +413,13 @@ footer {
   padding-left: 0;
   list-style-type: none;
 }
+
 .checkout-summary li {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .checkout-summary input {
   width: 25%;
   font-size: 1em;
@@ -433,6 +438,7 @@ footer {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
   background-color: #fefefe;
   margin: 8% auto;
@@ -440,33 +446,42 @@ footer {
   border: 1px solid #888;
   width: 40%;
 }
+
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
+
 /* Pop up */
 
 /* Style for the pop-up overlay */
 .popup {
-  display: none; /* Hide the pop-up by default */
+  display: none;
+  /* Hide the pop-up by default */
   position: fixed;
-  z-index: 1000; /* Ensure pop-up is on top */
+  z-index: 1000;
+  /* Ensure pop-up is on top */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  display: flex;
+  /* Use flexbox for centering */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
 }
 
 /* Style for the pop-up content box */
@@ -495,6 +510,7 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
+
 /* pop up end */
 /*carousel*/
 
@@ -551,4 +567,83 @@ footer {
 /* For product page color options */
 #colorImg img {
   width: 70px;
+}
+
+/* STYLING FOR CART INDEX.HTML PAGE */
+.product-list-cart {
+  display: flex;
+  /* Reference for how to make flex overflow to next line: */
+  /* https://stackoverflow.com/questions/62249771/how-can-i-make-my-flex-divs-overflow-to-the-next-line */
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+}
+
+.product-list-cart .cart-item {
+  /* Reference for display flex and flex property: */
+  /* https://www.w3schools.com/cssref/css3_pr_flex.php */
+  /* IE 10 */
+  -ms-flex: 1;
+  flex: 1;
+  margin: 10px;
+  padding: 10px;
+  min-width: 300px;
+}
+
+.product-list-cart button {
+  margin: 5px auto;
+}
+
+#wish-list-header {
+  /* Reference for display flex and flex property: */
+  /* https://www.w3schools.com/cssref/css3_pr_flex.php */
+  display: flex;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#wish-list-header h2 {
+  border-top: 10px solid lightgray;
+  border-left: 10px solid lightgray;
+  border-right: 10px solid lightgray;
+  margin: 0px auto;
+  padding: 10px;
+  width: 100%;
+}
+
+#wish-list {
+  /* Reference for display flex and flex property: */
+  /* https://www.w3schools.com/cssref/css3_pr_flex.php */
+  display: flex;
+  /* Reference for how to make flex overflow to next line: */
+  /* https://stackoverflow.com/questions/62249771/how-can-i-make-my-flex-divs-overflow-to-the-next-line */
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  background-color: lightgray;
+}
+
+#wish-list li.cart-item {
+  /* Reference for display flex and flex property: */
+  /* https://www.w3schools.com/cssref/css3_pr_flex.php */
+  /* IE 10 */
+  -ms-flex: 1;
+  flex: 1;
+  margin: 10px;
+  padding: 10px;
+
+  /* Reference for how to remove bullets from li tag: */
+  /* https://www.w3schools.com/howto/howto_css_list_without_bullets.asp */
+  list-style-type: none;
+  border: 1px solid grey;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+#wish-list button {
+  border-radius: 8px;
+  margin: 5px auto;
 }

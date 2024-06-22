@@ -24,9 +24,9 @@ if (form != null) {
   });
 }
 
-async function login(email, password, redirect = "/") {
+async function login(email, password, redirectParameter = "/") {
   const credentials = { email: email, password: password };
   const response = await loginRequest(credentials);
   setLocalStorage("so_token", response);
-  window.location = redirect;
+  window.location = redirectParameter;
 }
