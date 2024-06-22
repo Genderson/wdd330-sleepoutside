@@ -13,6 +13,7 @@
     <script src="../js/main.js" type="module"></script>
     <script src="../js/product.js" type="module"></script>
     <script src="../js/totalCartItems.mjs" type="module"></script>
+    <script type="module" src="../js/productComments.js"></script>
   </head>
 
   <body>
@@ -74,6 +75,17 @@
       <section class="">
         <ul class="product-list-filter"></ul>
       </section>
+      <br>
+      <!-- This section displays customer comments. It includes a list of comments and a form to submit new comments. -->
+      <section class="product-detail" id="comments-section">
+        <h2>Customer Comments</h2>
+        <ul id="comments-list"></ul>
+        <form id="comment-form">
+        <textarea id="comment-text" required placeholder="Add your comment here"></textarea>
+        <button type="submit">Submit Comment</button>
+        </form>
+        </section>
+  
     </main>
 
     <footer></footer>
