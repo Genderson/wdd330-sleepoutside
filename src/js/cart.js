@@ -13,37 +13,39 @@ document.addEventListener("DOMContentLoaded", () => {
   // When button is clicked, looks for the closest button to click
   // then looks for the closest item to the button
 
+  let cartItem = "";
+
   productList.addEventListener("click", (event) => {
     if (event.target.closest(".remove-item")) {
-      const cartItem = event.target.closest(".cart-item");
-      const itemId = cartItem.dataset.id; // Use 'id' in lowercase
+      cartItem = event.target.closest(".cart-item");
+      let itemId = cartItem.dataset.id; // Use 'id' in lowercase
 
       removeFromCart(itemId); // Function to remove item from local storage
       cartItem.remove(); // Remove the item from the DOM directly
       addWishListHeader();
-    }
-    else if (event.target.closest(".save-item")) {
-      const cartItem = event.target.closest(".cart-item");
-      const itemId = cartItem.dataset.id; // Use 'id' in lowercase
+    } else if (event.target.closest(".save-item")) {
+      cartItem = event.target.closest(".cart-item");
+      let itemId = cartItem.dataset.id; // Use 'id' in lowercase
       wishList.append(cartItem);
       document.getElementById(itemId).textContent = "Delete";
-      document.getElementById(`${itemId}-save-move`).textContent = "Move to cart";
+      document.getElementById(`${itemId}-save-move`).textContent =
+        "Move to cart";
 
       // Get Cart item from local storage
       let cart = getLocalStorage("so-cart");
-      console.log(cart);
 
       //Find the item in the index
       const itemIndex = cart.findIndex((item) => item.Id === itemId);
 
       // Reference to change DOM image src: https://www.w3schools.com/jsref/prop_img_src.asp
-      document.getElementById(`${itemId}-image`).src = cart[itemIndex].Images.PrimarySmall;
+      document.getElementById(`${itemId}-image`).src =
+        cart[itemIndex].Images.PrimarySmall;
 
       saveForLater(cart[itemIndex], wishList);
       removeFromCart(itemId); // Function to remove item from local storage
 
       document.getElementById(itemId).addEventListener("click", () => {
-        const cartItem = event.target.closest(".cart-item");
+        cartItem = event.target.closest(".cart-item");
         cartItem.remove(); // Remove the item from the DOM directly
         removeFromSaveForLaterCart(itemId); // Function to remove item from local storage
         addWishListHeader();
@@ -58,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //Find the item in the index
     const itemIndex = cart.findIndex((item) => item.Id === itemId);
-    console.log(itemIndex);
 
     // Remove from array
     if (itemIndex !== -1) {
@@ -77,22 +78,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   wishList.addEventListener("click", (event) => {
     if (event.target.closest(".remove-item")) {
-      const cartItem = event.target.closest(".cart-item");
-      const itemId = cartItem.dataset.id; // Use 'id' in lowercase
+      cartItem = event.target.closest(".cart-item");
+      let itemId = cartItem.dataset.id; // Use 'id' in lowercase
 
       removeFromSaveForLaterCart(itemId); // Function to remove item from local storage
       cartItem.remove(); // Remove the item from the DOM directly
 
-      // After removing the cartItem html, save the innerHTML for wishList. 
+      // After removing the cartItem html, save the innerHTML for wishList.
       // Reference to store an html element in localStorage: https://stackoverflow.com/questions/48239869/how-to-store-a-complete-div-in-localstorage
       localStorage.setItem("save-for-later-html", wishList.innerHTML);
       addWishListHeader();
     }
     // Move to cart
     else if (event.target.closest(".save-item")) {
-      const cartItem = event.target.closest(".cart-item");
-      const itemId = cartItem.dataset.id; // Use 'id' in lowercase
-      
+      cartItem = event.target.closest(".cart-item");
+      let itemId = cartItem.dataset.id; // Use 'id' in lowercase
+
       // Get Save For Later Cart item from local storage
       let cart = getLocalStorage("save-for-later-cart");
 
@@ -100,15 +101,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemIndex = cart.findIndex((item) => item.Id === itemId);
 
       moveToCart(cart[itemIndex]);
-      removeFromSaveForLaterCart(itemId); // Function to remove item from local storage 
-      
+      removeFromSaveForLaterCart(itemId); // Function to remove item from local storage
+
       cartItem.remove(); // Remove the item from the DOM directly
 
-      // After removing the cartItem html, save the innerHTML for wishList. 
+      // After removing the cartItem html, save the innerHTML for wishList.
       // Reference to store an html element in localStorage: https://stackoverflow.com/questions/48239869/how-to-store-a-complete-div-in-localstorage
       localStorage.setItem("save-for-later-html", wishList.innerHTML);
 
-      const productList = document.querySelector(".product-list-cart");
       productList.innerHTML = ""; // Clear the html before loading html each time.
       shoppingCart();
       displayTotalCartItems();
@@ -120,10 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function saveForLater(item, wishList) {
   let saveForLaterItems = getLocalStorage("save-for-later-cart") || [];
-  console.log(saveForLaterItems);
   saveForLaterItems.push(item);
 
-  localStorage.setItem("save-for-later-cart", JSON.stringify(saveForLaterItems));
+  localStorage.setItem(
+    "save-for-later-cart",
+    JSON.stringify(saveForLaterItems)
+  );
   // Reference to store an html element in localStorage: https://stackoverflow.com/questions/48239869/how-to-store-a-complete-div-in-localstorage
   localStorage.setItem("save-for-later-html", wishList.innerHTML);
 }
@@ -156,21 +158,20 @@ function moveToCart(item) {
 
 // Ideas for wish list obtained from Amazon: https://www.amazon.com/gp/cart/view.html/ref=chk_cart_link_return_to_cart
 function addWishListHeader() {
-    // Get Save For Later Cart item from local storage
-    let cart = getLocalStorage("save-for-later-cart");
-    const wishListHeader = document.getElementById("wish-list-header");
-    wishListHeader.innerHTML = "";
-    // Reference on how to create DOM element: https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore  
-    let h2 = document.createElement("h2");
-    
-    if (cart.length > 1) {   
-      h2.textContent = `Saved for later (${cart.length} items)`;
-      wishListHeader.appendChild(h2);
-    }
-    else if (cart.length == 1) {
-      h2.textContent = `Saved for later (${cart.length} item)`;
-      wishListHeader.appendChild(h2);
-    }
+  // Get Save For Later Cart item from local storage
+  let cart = getLocalStorage("save-for-later-cart") || [];
+  const wishListHeader = document.getElementById("wish-list-header");
+  wishListHeader.innerHTML = "";
+  // Reference on how to create DOM element: https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore
+  let h2 = document.createElement("h2");
+
+  if (cart.length > 1) {
+    h2.textContent = `Saved for later (${cart.length} items)`;
+    wishListHeader.appendChild(h2);
+  } else if (cart.length == 1) {
+    h2.textContent = `Saved for later (${cart.length} item)`;
+    wishListHeader.appendChild(h2);
+  }
 }
 
 shoppingCart();
