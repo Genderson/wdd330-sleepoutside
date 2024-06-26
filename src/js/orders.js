@@ -5,5 +5,6 @@ import { currentOrders } from "./currentOrders.mjs";
 loadHeaderFooter();
 
 const token = checkLogin();
+const tokenString = JSON.stringify(token);
 
-currentOrders("#orders", token);
+currentOrders("#orders", tokenString);
