@@ -1,4 +1,4 @@
-import jwt_decode from "jwt-decode";
+import jwt_decode from "/Code/wdd330/wdd330-sleepoutside/package.json";
 
 function login(creds, redirect) {
 
