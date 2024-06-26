@@ -654,9 +654,13 @@ footer {
   padding: 15px;
   border: 1px solid var(--light-grey);
   border-radius: 5px;
-  background-color: rgba(164, 184, 196, 0.2); /* used the roots tertiary-color added opacity*/
+  background-color: rgba(
+    164,
+    184,
+    196,
+    0.2
+  ); /* used the roots tertiary-color added opacity*/
   font-family: var(--font-body);
-
 }
 
 #comments-section h2 {

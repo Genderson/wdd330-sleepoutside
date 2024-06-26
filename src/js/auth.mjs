@@ -1,4 +1,5 @@
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
+import { getLocalStorage } from "./utils.mjs";
 
 function login(creds, redirect) {
 
@@ -8,7 +9,7 @@ function isTokenValid(token) {
     // check to make sure a token was actually passed in.
     if (token) {
         // decode the token
-        const decoded = jwt_decode(token);
+        const decoded = jwtDecode(token);
         // get the current date
         let currentDate = new Date();
         // JWT exp is in seconds, the time from our current date will be milliseconds.
@@ -30,8 +31,9 @@ function isTokenValid(token) {
 export function checkLogin() {
     // get the token from localStorage
     const token = getLocalStorage("so_token");
+    const tokenString = JSON.stringify(token);
     // use the isTokenValid function to check the validity of our token
-    const valid = isTokenValid(token);
+    const valid = isTokenValid(tokenString);
     // if the token is NOT valid
     if (!valid) {
       //remove stored token
