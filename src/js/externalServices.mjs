@@ -59,3 +59,14 @@ export async function getOrdersRequest(token) {
   };
   return await fetch(baseURL + "/orders", options).then(convertToJson);
 }
+
+export async function register(info) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(info),
+  }
+  return await fetch(baseURL + "/users", options).then(convertToJson);
+}
